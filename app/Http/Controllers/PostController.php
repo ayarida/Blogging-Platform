@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post; 
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -17,15 +18,31 @@ class PostController extends Controller
     }
 
     public function store(Request $request){
+        //dd($request);
         $request->validate([
             'text'=>'required',
             'public'=>'required'
+
         ]); 
-        $post=new Post([
-            'text'=>$request->get('post-text'), 
-            'public'=>$request->get('public')
-        ]); 
-        $post->save(); 
+        
+        Post::create([
+            'text'=>$request->input('text'), 
+            'public'=>$request->input('public'),
+            'user_id'=>Auth::id()
+        ]);
+
         return redirect('/post/create')->with('success','Post Created Successfully!');
+        
+        /*$post=$request->get('text');
+        $public=$request->get('public');
+
+        return view('posts.index',[
+            'post'=>$post,
+            'public'=>$public
+        ]);*/
     }
+
+
+
+
 }

@@ -17,10 +17,10 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->String('text')->nullable(); 
             $table->String('image')->nullable(); //url of the image
-            $table->String('type');
-            $table->unsignedBigInteger('user_id');
+            $table->String('type')->nullable();
+            $table->unsignedBigInteger('user_id')->default(0);
             
-            $table->boolean('public')->default(true); 
+            $table->boolean('public')->default(true); //set the post to be public as default
             $table->boolean('archive')->default(false); 
             
             $table->foreign('user_id')->references('id')->on('users');

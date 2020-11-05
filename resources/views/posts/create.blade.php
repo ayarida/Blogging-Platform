@@ -22,25 +22,26 @@
                     @csrf
                         <div class="form-group">
                         <label for="exampleInputEmail1">Text</label>
-                        <textarea type="text" id="title" name="post-text" class="form-control" required="" placeholder="Enter your text here.." width="50px" height="80px"></textarea>
+                        <textarea id="title" name="text" class="form-control" required="" placeholder="Enter your text here" width="50px" height="80px"></textarea>
                         </div>
                         <div class="form-group">
                             
                             <label for="public">Public</label>
-                            <input type="radio" id="public" name="public" value="public">
+                            <input type="radio" id="public" name="public" value=1>
 
                             <label for="private">Private</label>
-                            <input type="radio" id="private" name="public" value="private">
+                            <input type="radio" id="private" name="public" value=0>
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
+                    
+                    </div>
                     <div class="col-sm-12">  
                         @if(session()->get('success'))    
                         <div class="alert alert-success">     
                             {{ session()->get('success') }}     
                             </div>  
                         @endif
-                    </div>
                     </div>
                 </div>
                 </div>
