@@ -21,7 +21,11 @@
                     <form name="add-blog-post-form" id="add-blog-post-form" method="post" action="{{route('PostStore')}}">
                     @csrf
                         <div class="form-group">
-                        <label for="exampleInputEmail1">Text</label>
+                        <label for="title">Post Title:</label>
+                        <input type="text" id="title" name="title" style="border: 1px">
+                        </div>
+                        <div class="form-group">
+                        <label for="title">Text:</label>
                         <textarea id="title" name="text" class="form-control" required="" placeholder="Enter your text here" width="50px" height="80px"></textarea>
                         </div>
                         <div class="form-group">

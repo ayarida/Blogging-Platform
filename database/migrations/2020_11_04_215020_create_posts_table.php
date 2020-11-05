@@ -15,10 +15,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->String('text')->nullable(); 
+            $table->String('title')->nullable();
+            $table->longText('text')->nullable(); 
             $table->String('image')->nullable(); //url of the image
             $table->String('type')->nullable();
-            $table->unsignedBigInteger('user_id')->default(0);
+            $table->unsignedBigInteger('user_id');
             
             $table->boolean('public')->default(true); //set the post to be public as default
             $table->boolean('archive')->default(false); 
