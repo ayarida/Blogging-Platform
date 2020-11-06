@@ -9,7 +9,8 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <img src="{{ asset('images/2.png') }}" height="500px" width="500px" style="background-color: white" />
+               <!-- The Main Page will shows the Public posts with the email of the user posted it, 
+            once the user logged in it will shows its own posts -->
                 
         </div>
     </div>
