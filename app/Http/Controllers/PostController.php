@@ -14,9 +14,10 @@ class PostController extends Controller
     }
 
     public function index(){
-        $posts=Post::all();
+        $posts=Post::paginate(3);
         return view('posts.index',[
-            'posts'=>$posts
+            'posts'=>$posts, 
+            'userId'=>Auth::id()
         ]);
     }
 
@@ -40,7 +41,8 @@ class PostController extends Controller
             'user_id'=>Auth::id()
         ]);
 
-        return redirect('/post/create')->with('success','Post Created Successfully!');
+        //return redirect('/post/create')->with('success','Post Created Successfully!');
+        return redirect()->route('ListPosts');
     }
 
     public function edit($PostId){
@@ -55,5 +57,23 @@ class PostController extends Controller
         $post->delete();
         return redirect('/posts')->with('success', 'Customer deleted!');
     }
+
+    public function show($PostId){
+        
+        $post=Post::find($PostId); 
+        return view('posts.show',[
+            'post'=>$post
+        ]);
+    }
+
+    //Function to lists all the public posts in main Page
+    public function showPublicPosts(){
+        $posts=Post::all()->where('public',1); //retrieve all the public posts 
+        return view('posts.index',[
+            'posts'=>$posts
+        ]);
+    }
+
+
 
 }

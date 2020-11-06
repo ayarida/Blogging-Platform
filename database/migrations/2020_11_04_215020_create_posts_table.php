@@ -22,7 +22,8 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             
             $table->boolean('public')->default(true); //set the post to be public as default
-            $table->boolean('archive')->default(false); 
+            $table->softDeletes(); 
+            //soft delete to make sure that the element is not deleted at all from the database 
             
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

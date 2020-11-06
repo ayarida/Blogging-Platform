@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +30,5 @@ Route::post('post/create', [PostController::class,'store'])->name('PostStore');
 Route::get('/posts/{postid}/edit',[PostController::class,'edit'])->name('PostGetUpdate'); //get the form to update the post 
 Route::delete('/posts/{postid}',[PostController::class,'destroy'])->name('PostDelete');
 //Route::patch('/posts/{postid}',[PostController::class,'update'])->name('postupdate');*/
+Route::get('/post/{postid}/show',[PostController::class,'show'])->name('ShowPostDetails');
+Route::post('/post/AddComment',[CommentController::class,'store'])->name('StoreComment');

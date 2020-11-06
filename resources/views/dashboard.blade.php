@@ -11,7 +11,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                <!-- The Main Page will shows the Public posts with the email of the user posted it, 
             once the user logged in it will shows its own posts -->
-                
+                @yield('content')
         </div>
     </div>
 </x-app-layout>
