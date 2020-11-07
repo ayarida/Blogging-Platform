@@ -30,19 +30,24 @@ class PostController extends Controller
         $request->validate([
             'title'=>'required',
             'text'=>'required',
-            'public'=>'required'
+            'public'=>'required',
+            'image'=>'required|image:jpeg,png,jpg,gif,svg|max:2048',
 
         ]); 
         
+        $imageName=Auth::id().'.'.$request->image->extension();
         Post::create([
             'title'=>$request->input('title'),
             'text'=>$request->input('text'), 
             'public'=>$request->input('public'),
-            'user_id'=>Auth::id()
+            'user_id'=>Auth::id(),
+            'image'=> $imageName,
         ]);
+    
+        $request->image->move(public_path('images'),$imageName); 
 
-        //return redirect('/post/create')->with('success','Post Created Successfully!');
-        return redirect()->route('ListPosts');
+        return redirect('/post/create')->with('success','Post Created Successfully!');
+        //return redirect()->route('ListPosts');
     }
 
     public function edit($PostId){
@@ -73,7 +78,6 @@ class PostController extends Controller
             'posts'=>$posts
         ]);
     }
-
 
 
 }

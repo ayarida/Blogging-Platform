@@ -111,7 +111,7 @@ html {
                         <div class="card">
                           <a href="{{route('ShowPostDetails',$post->id)}}">
                           
-                          <img src="{{ asset('images/2.png') }}" alt="Jane" style="width:100%">
+                          <img src="{{asset('images').'/'.$post->user_id.'jpeg'}}" style="width:100%">
                           </a>
                           <div class="container">
                             <div>
