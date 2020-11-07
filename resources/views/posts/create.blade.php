@@ -42,12 +42,12 @@
                             <label for="private">Private</label>
                             <input type="radio" id="private" name="public" value=0>
                             
-                            <div class="row">
+                            {{-- <div class="row">
                       
                                 <div class="col-md-6">
                                     <input type="file" name="image" class="form-control">
                                 </div>
-                            </div>
+                            </div> --}}
                            
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

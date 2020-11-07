@@ -14,7 +14,7 @@ class PostController extends Controller
     }
 
     public function index(){
-        $posts=Post::paginate(3);
+        $posts=Post::paginate(5);
         return view('posts.index',[
             'posts'=>$posts, 
             'userId'=>Auth::id()
@@ -31,20 +31,20 @@ class PostController extends Controller
             'title'=>'required',
             'text'=>'required',
             'public'=>'required',
-            'image'=>'required|image:jpeg,png,jpg,gif,svg|max:2048',
+            // 'image'=>'required|image:jpeg,png,jpg,gif,svg|max:2048',
 
         ]); 
         
-        $imageName=Auth::id().'.'.$request->image->extension();
+        // $imageName=Auth::id().'.'.$request->image->extension();
         Post::create([
             'title'=>$request->input('title'),
             'text'=>$request->input('text'), 
             'public'=>$request->input('public'),
             'user_id'=>Auth::id(),
-            'image'=> $imageName,
+            // 'image'=> $imageName,
         ]);
     
-        $request->image->move(public_path('images'),$imageName); 
+        // $request->image->move(public_path('images'),$imageName); 
 
         return redirect('/post/create')->with('success','Post Created Successfully!');
         //return redirect()->route('ListPosts');
@@ -78,6 +78,5 @@ class PostController extends Controller
             'posts'=>$posts
         ]);
     }
-
 
 }
