@@ -1,6 +1,7 @@
 @section('header')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 @endsection 
+
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -42,12 +43,12 @@
                             <label for="private">Private</label>
                             <input type="radio" id="private" name="public" value=0>
                             
-                            {{-- <div class="row">
+                            <div class="row">
                       
                                 <div class="col-md-6">
                                     <input type="file" name="image" class="form-control">
                                 </div>
-                            </div> --}}
+                            </div>
                            
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>

@@ -20,8 +20,9 @@ class Post extends Model
         return $this->hasMany('App\Models\Comment')->whereNull('parent_id'); //retrieve the comments that still have no reply
     }
 
-    public function likes(){
-        return $this->hasMany('App\Models\Like')->count();
+    public function NbOfLikes(){
+        return $this->hasMany('App\Models\Like')->count(); //return the number of likes on this post
     }
+
 
 }

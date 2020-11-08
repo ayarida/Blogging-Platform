@@ -1,170 +1,95 @@
-<html>
-<head>
-    <style>
-    html {
-  box-sizing: border-box;
-}
+@extends('layouts.app')
 
-*, *:before, *:after {
-  box-sizing: inherit;
-}
 
-.column {
-  float: left;
-  width: 33.3%;
-  margin-bottom: 16px;
-  padding: 0 8px;
-  height: 600px;
-  overflow-y: auto;
-}
+@section('content')
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-@media screen and (max-width: 650px) {
-  .column {
-    width: 100%;
-    display: block;
-    height: 500px;
-    overflow-y: auto;
-  }
-}
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 
-.container {
-  padding: 0 16px;
-}
 
-.container::after, .row::after {
-  content: "";
-  clear: both;
-  display: table;
-}
+<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Posts</div>
 
-.title {
-  color: grey;
-}
 
-.button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-}
-
-.button:hover {
-  background-color: #555;
-}
-.PostActions{
-        display:flex;
-      }
-            .dropbtn {
-        background-color: white;
-        color: black;
-        padding: 16px;
-        font-size: 16px;
-        border: none;
-        }
-
-        .dropdown {
-        float: right;
-        margin-right:30px;
-        display: inline-block;
-        }
-
-        .dropdown-content {
-        display: none;
-        position: absolute;
-        background-color: #f1f1f1;
-        min-width: 160px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        z-index: 1;
-        }
-
-        .dropdown-content a {
-        color: black;
-        padding: 7px 9px;
-        text-decoration: none;
-        display: block;
-        }
-
-        .dropdown-content a:hover {background-color: #ddd;}
-
-        .dropdown:hover .dropdown-content {display: block;}
-
-        .dropdown:hover .dropbtn {background-color: #4780c2;}
-        .PostActions{
-        display:flex;
-      }
-    </style>
-</head>
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    
-
-    <div class="py-12">
-     
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-          <div class="container">
-            <input type="text" name="text" placeholder="What's on your mind?" >
-          </div>
-          <br/>
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-              
-               <div class="row"> 
-                    @foreach ($posts as $post)                    
-                    {{-- <div>
-                      <div class="column">
-                        <div class="card">
-                          <img src="{{ asset('images/2.png') }}" alt="Jane" style="width:100%">
-                          <div class="container">
-                            <div>
-                              <h2>{{$post->title}}</h2>
-                              <div class="dropdown">
-                                <button class="dropbtn">...</button>
-                                <div class="dropdown-content">
-                                  <a href="{{route('PostGetUpdate',$post->id)}}">Edit</a>
-                                  <form action="{{route('PostDelete',$post->id)}}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a><button class="btn btn-danger" type="submit">Delete</button></a>
-                                  </form>
-                                  
+                <div class="card-body">
+                    @if($posts->count())
+                        @foreach($posts as $post)
+                            <article class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="panel panel-info" data-id="{{ $post->id }}">
+                                    <div class="panel-body">
+                                        <a href="https://itsolutionstuff.com/upload/itsolutionstuff.png" title="Nature Portfolio" data-title="Amazing Nature" data-footer="The beauty of nature" data-type="image" data-toggle="lightbox">
+                                            <img src="https://itsolutionstuff.com/upload/itsolutionstuff.png" alt="Nature Portfolio" />
+                                            <span class="overlay"><i class="fa fa-search"></i></span>
+                                        </a>
+                                    </div>  
+                                    <div class="panel-footer">
+                                        <h4><a href="#" title="Nature Portfolio">{{ $post->title }}</a></h4>
+                                        <span class="pull-right">
+                                            <span class="like-btn">
+                                                <i id="like{{$post->id}}" class="glyphicon glyphicon-thumbs-up {{ auth()->user()->hasLiked($post) ? 'like-post' : '' }}"></i> 
+                                                <div id="like{{$post->id}}-bs3">{{ $post->likers()->get()->count() }}</div>
+                                            </span>
+                                        </span>
+                                    </div>
                                 </div>
-                              </div>
-                            </div>
-                            <p class="title">{{$post->text}}</p>
-                           
-                            <p>example@example.com</p>
-                            <div class="PostActions">
-                            <a href="#">
-                              <img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like.png" height="30px" width="30px"/>
-                            </a>
-                            <a href="#">
-                              <img src="https://img.icons8.com/metro/26/000000/comments.png" height="25px" width="25px"/>
-                            </a>
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div> --}}
-                    
-                    @endforeach
+                            </article>
+                        @endforeach
+                    @endif
                 </div>
             </div>
-                
         </div>
     </div>
-</x-app-layout> 
-</html>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {     
+
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $('i.glyphicon-thumbs-up, i.glyphicon-thumbs-down').click(function(){    
+            var id = $(this).parents(".panel").data('id'); //post id 
+            var c = $('#'+this.id+'-bs3').html();  // #likepostId-bs3
+            var cObjId = this.id;
+            var cObj = $(this);
+
+
+            $.ajax({
+               type:'POST',
+               url:'/ajaxRequest',
+               data:{id:id},
+               success:function(data){
+                  if(jQuery.isEmptyObject(data.success.attached)){
+                    $('#'+cObjId+'-bs3').html(parseInt(c)-1);
+                    $(cObj).removeClass("like-post");
+                  }else{
+                    $('#'+cObjId+'-bs3').html(parseInt(c)+1);
+                    $(cObj).addClass("like-post");
+                  }
+               }
+            });
+
+
+        });      
+
+
+        $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });                                        
+    }); 
+</script>
+@endsection

@@ -115,7 +115,7 @@ html {
 #main-wrapper {
     float: left;
     overflow: hidden;
-    width: 66.66666667%;
+    width: 1176px;
     box-sizing: border-box;
     padding: 0 20px;
 }
@@ -202,7 +202,8 @@ body {
 
 @extends('dashboard')
 @section('content')
-              <div><p class="h1" style="text-align: center">These are the posts</p> </div>
+            
+            <br>
               <div id="main-wrapper" style="position: relative; overflow:visible; box-sizing:border-box;min-height:1px">
                 <div class="theiaStickySidebar" style="padding-top:0px; padding-bottom:1px; position:static; transform:none;" >
                   <div class="main section" id="main" name="Main Posts">
@@ -214,7 +215,7 @@ body {
                             <div class="blog-post hentry index-post">
                               <div class="post-image-wrap">
                                 <a href="{{route('ShowPostDetails',$post->id)}}">
-                                <img src="{{asset('images/2.png')}}" height="140px" width="180px" style="border: 1px solid black"/>
+                                <img src="{{asset('images/').'/'.$post->image}}" height="140px" width="180px" style="border: 1px solid black"/>
                                 </a>
                               </div>
                               <div class="post-info">
@@ -243,10 +244,14 @@ body {
                                   {{-- <span class="post-author">
                                     {{$post->text}}
                                   </span> --}}
+                                  <div style="display:block">
+                                  <img @if ($post->public=='1')src="{{asset('images/public.png')}}" height="13px" width="13px" @endif/>
+                                  <img @if ($post->public=='0')src="{{asset('images/private.png')}}" height="15px" width="15px" @endif/>
                                   <span class="post-date published" datetime="2016-08-23T15:00:00-07:00">
                                     Published at {{$post->created_at}}
 
                                   </span>
+                                </div>
                                 </div>
                                 <p class="post-snippet">
                                   {{$post->text}}
@@ -255,48 +260,7 @@ body {
                              
                                 <a href="{{route('ShowPostDetails',$post->id)}}" style="padding-top:10px; float:right"><p style="color:#557A95"> >>View Post</p></a>
                               
-                            </div>  
-                          {{-- <div>
-                            <div class="column">
-                              <div class="card">
-                                <a href="{{route('ShowPostDetails',$post->id)}}">
-                                
-                                <img src="{{asset('images').'/'.$post->user_id.'jpeg'}}" style="width:100%">
-                                </a>
-                                <div class="container">
-                                  <div>
-                                    <h2>{{$post->title}}</h2>
-                                    @if($post->user_id == $userId)
-                                    <div class="dropdown">
-                                      <button class="dropbtn">...</button>
-                                      
-                                      <div class="dropdown-content">
-                                        <a href="{{route('PostGetUpdate',$post->id)}}">Edit</a>
-                                        
-                                        <form action="{{route('PostDelete',$post->id)}}" method="post">
-                                          @csrf
-                                          @method('DELETE')
-                                          <a ><button class="btn btn-danger" type="submit">Delete</button></a>
-                                        </form>
-                                      </div>
-                                    </div>
-                                    @endif
-                                  </div>
-                                  <p class="title">{{$post->text}}</p>
-                                
-                                  <p>example@example.com</p>
-                                  <div class="PostActions">
-                                  {{-- <a href="#">
-                                    <img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like.png" height="30px" width="30px"/>
-                                  </a>
-                                  <a href="#">
-                                    <img src="https://img.icons8.com/metro/26/000000/comments.png" height="25px" width="25px"/>
-                                  </a> 
-                                </div>
-                                </div>
-                              </div>
                             </div> 
-                          </div> --}}
                           
                           @endforeach
                       
