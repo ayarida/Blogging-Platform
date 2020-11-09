@@ -33,7 +33,7 @@ Route::post('post/create', [PostController::class,'store'])->name('PostStore');
 Route::get('/post/{postid}/edit',[PostController::class,'edit'])->name('PostGetUpdate');  
 
 //Edit Modal
-Route::post('/post/update',[PostController::class,'update'])->name('PostUpdate');
+Route::post('/post/{postid}/update',[PostController::class,'update'])->name('PostUpdate');
 
 Route::delete('/posts/{postid}',[PostController::class,'destroy'])->name('PostDelete');
 Route::get('/posts/private',[PostController::class,'showPrivatePosts'])->name('UserPrivatePosts');
