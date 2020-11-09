@@ -1,9 +1,12 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight" style="font-size: 20px">
+        {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight" style="font-size: 20px"> --}}
+            {{-- <div style="display:inline-block">
+            <img src="{{asset('images/logo.png')}}" height="40px" width="40px"/>
             {{ __('BLOG PLATFORM') }}
-        </h2>
+            </div> --}}
+        {{-- </h2> --}}
     </x-slot>
 
     <div class="py-12">

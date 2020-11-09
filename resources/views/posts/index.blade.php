@@ -144,7 +144,7 @@ h2 {
     margin-inline-end: 0px;
     font-weight: bold;
 }
-span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
+strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
     padding: 0;
     border: 0;
     outline: 0;
@@ -152,7 +152,7 @@ span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, u
     background: 0 0;
     text-decoration: none;
 }
-h6, html, i,img,span,strike{
+h6, html, i,img,strike{
     padding: 0;
     border: 0;
     outline: 0;
@@ -160,7 +160,7 @@ h6, html, i,img,span,strike{
     background: 0 0;
     text-decoration: none;
 }
-a,body,form, h1, h2, h3, h4, h5, h6,img, span, strike,table, tbody{
+a,body,form, h1, h2, h3, h4, h5, h6,img,strike,table, tbody{
     padding: 0;
     border: 0;
     outline: 0;
@@ -197,6 +197,14 @@ body {
     overflow: hidden;
     word-wrap: break-word;
 }
+
+.SharePost{
+  font-size: 17px;
+}
+
+.CreateLink{
+  color:blue;
+}
 </style>
 @endsection
 
@@ -209,7 +217,11 @@ body {
                   <div class="main section" id="main" name="Main Posts">
                     <div class="widget Blog" data-version="2" id="Blog1">
                       <div class="blog-posts hfeed index-post-wrap">
-
+                        <div class="SharePost">
+                        <span>Share your Post? </span><a class="CreateLink" href="{{route('PostGetCreate')}}" >Create Post</a>
+                        </div>
+                        <br>
+                        <hr />
                         <div class="row"> 
                           @foreach ($posts as $post)   
                             <div class="blog-post hentry index-post">

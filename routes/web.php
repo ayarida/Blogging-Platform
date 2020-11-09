@@ -26,8 +26,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 //Post Routes //CRUD 
 Route::get('/posts',[PostController::class,'index'])->name('ListPosts');
-
-
 Route::get('post/create',[PostController::class,'create'])->name('PostGetCreate');
 Route::post('post/create', [PostController::class,'store'])->name('PostStore'); 
 
