@@ -54,14 +54,30 @@ class PostController extends Controller
        
     }
 
-    //Edit Post
-    public function edit($PostId){
-        $post=Post::find($PostId); 
+    //Edit Post View
+    public function edit($postId){
+        $post=Post::find($postId); 
         
-        return response()->json([
-            'data'=>$post
+        // return response()->json([
+        //     'data'=>$post
+        // ]);
+        return view('posts.edit', [
+            'post'=>$post
         ]);
+    }
 
+    //Update Post
+    public function update(Request $request,$postId){
+        $request->validate([
+            'title'=>'required', 
+            'text'=>'required'
+        ]); 
+        $post=Post::find($postId); 
+        $post->title=$request->get('title'); 
+        $post->text=$request->get('text'); 
+        $post->save(); 
+
+        return redirect('/posts');
     }
 
     //Delete Post

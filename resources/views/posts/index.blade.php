@@ -218,7 +218,7 @@ body {
                     <div class="widget Blog" data-version="2" id="Blog1">
                       <div class="blog-posts hfeed index-post-wrap">
                         <div class="SharePost">
-                        <span>Share your Post?</span><a class="CreateLink" href="{{route('PostGetCreate')}}" >Create Post</a>
+                        <span>Share yours?  </span><a class="CreateLink" href="{{route('PostGetCreate')}}" >Create Post</a>
                         </div>
                         <br>
                         <hr />

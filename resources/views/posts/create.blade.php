@@ -4,9 +4,9 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        {{-- <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Create Post') }}
-        </h2>
+        </h2> --}}
     </x-slot>
 
     <div class="py-12">
@@ -29,11 +29,11 @@
                     @csrf
                         <div class="form-group">
                         <label for="title">Post Title:</label>
-                        <input type="text" id="title" name="title" style="border: 1px">
+                        <input placeholder="Title" type="text" id="title" name="title" style="border:solid 2px gray">
                         </div>
                         <div class="form-group">
-                        <label for="title">Text:</label>
-                        <textarea id="title" name="text" class="form-control" required="" placeholder="Enter your text here" width="50px" height="80px"></textarea>
+                        <label for="title">Description:</label>
+                        <textarea style="border:solid 2px gray;" id="title" name="text" class="form-control" required="" placeholder="Enter your text here" width="50px" height="80px"></textarea>
                         </div>
                         <div class="form-group">
                             
