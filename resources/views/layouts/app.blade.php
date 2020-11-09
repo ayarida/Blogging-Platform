@@ -39,5 +39,6 @@
         @stack('modals')
 
         @livewireScripts
+        @stack('ajax_crud')
     </body>
 </html>

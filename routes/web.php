@@ -26,10 +26,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 //Post Routes //CRUD 
 Route::get('/posts',[PostController::class,'index'])->name('ListPosts');
+
+
 Route::get('post/create',[PostController::class,'create'])->name('PostGetCreate');
 Route::post('post/create', [PostController::class,'store'])->name('PostStore'); 
-Route::get('/posts/{postid}/edit',[PostController::class,'edit'])->name('PostGetUpdate');  
-Route::patch('/posts/{postid}',[PostController::class,'update'])->name('postupdate');
+
+//get Edit
+Route::get('/post/{postid}/edit',[PostController::class,'edit'])->name('PostGetUpdate');  
+
+//Edit Modal
+Route::post('/post/update',[PostController::class,'update'])->name('PostUpdate');
+
 Route::delete('/posts/{postid}',[PostController::class,'destroy'])->name('PostDelete');
 Route::get('/posts/private',[PostController::class,'showPrivatePosts'])->name('UserPrivatePosts');
 
@@ -42,3 +49,4 @@ Route::post('/post/AddComment',[CommentController::class,'store'])->name('StoreC
 
 //Like
 Route::post('/post/Addlike',[PostController::class,'likePost'])->name('LikePost');
+

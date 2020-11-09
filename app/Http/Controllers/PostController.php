@@ -57,9 +57,11 @@ class PostController extends Controller
     //Edit Post
     public function edit($PostId){
         $post=Post::find($PostId); 
-        return view('posts.edit',[
-            'post'=>$post
+        
+        return response()->json([
+            'data'=>$post
         ]);
+
     }
 
     //Delete Post
@@ -80,9 +82,11 @@ class PostController extends Controller
 
     //Function to lists all the public posts in main Page
     public function showPublicPosts(){
-        $posts=Post::all()->where('public',1);
-        return view('posts.index',[
-            'posts'=>$posts
+        $posts=Post::where('public',1)->paginate(5);
+        return view('posts.guest',[
+            'posts'=>$posts,
+            'userId'=>Auth::id(),
+            'user'=>Auth::user()
         ]);
     }
 
