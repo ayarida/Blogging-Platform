@@ -32,7 +32,7 @@
         <p>{{ $comment->body }}</p>
         <div class="comment_details">
         <ul>
-            <li><i class="fa fa-clock-o"></i>{{$temp[1]}}</li>
+            <li><i class="fa fa-clock-o"></i>{{$temp[1]}}</li> 
             <li><i class="fa fa-calendar"></i>{{$temp[0]}}</li>
             <li><i class="fa fa-pencil"></i> <span class="user">{{$comment->user->name}}</span></li>
         </ul>

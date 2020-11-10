@@ -38,6 +38,7 @@ class CommentController extends Controller
         $request->validate([
             'body'=>'required',
         ]);
+        //retrieve the body, post_id and user_id to create the instance
         $input=$request->all(); 
         $input['user_id']=Auth::id();
 

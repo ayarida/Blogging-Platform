@@ -25,21 +25,17 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/home', function () {
 })->name('home');
 
 //Post Routes //CRUD 
-Route::get('/posts',[PostController::class,'index'])->name('ListPosts');
 Route::get('post/create',[PostController::class,'create'])->name('PostGetCreate');
 Route::post('post/create', [PostController::class,'store'])->name('PostStore'); 
-
-//get Edit
+Route::delete('/posts/{postid}',[PostController::class,'destroy'])->name('PostDelete');
 Route::get('/post/{postid}/edit',[PostController::class,'edit'])->name('PostGetUpdate');  
-
-//Edit Modal
 Route::post('/post/{postid}/update',[PostController::class,'update'])->name('PostUpdate');
 
-Route::delete('/posts/{postid}',[PostController::class,'destroy'])->name('PostDelete');
+//Private Public
 Route::get('/posts/private',[PostController::class,'showPrivatePosts'])->name('UserPrivatePosts');
+Route::get('/posts',[PostController::class,'index'])->name('ListPosts');
 
-
-//List Post
+//Show Post Details
 Route::get('/post/{postid}/show',[PostController::class,'show'])->name('ShowPostDetails');
 
 //Comment

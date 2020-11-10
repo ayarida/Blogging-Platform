@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group">
                         <label for="title">Description:</label>
-                        <textarea style="border:solid 2px gray;" id="title" name="text" class="form-control" required="" placeholder="Enter your text here" width="50px" height="80px"></textarea>
+                        <textarea style="border:solid 2px gray;" id="title" name="text" class="form-control" placeholder="Enter your text here" width="50px" height="80px"></textarea>
                         </div>
                         <div class="form-group">
                             

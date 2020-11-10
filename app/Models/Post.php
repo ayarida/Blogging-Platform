@@ -24,5 +24,4 @@ class Post extends Model
         return $this->hasMany('App\Models\Like')->count(); //return the number of likes on this post
     }
 
-
 }

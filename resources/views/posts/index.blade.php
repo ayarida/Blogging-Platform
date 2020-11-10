@@ -227,7 +227,7 @@ body {
                             <div class="blog-post hentry index-post">
                               <div class="post-image-wrap">
                                 <a href="{{route('ShowPostDetails',$post->id)}}">
-                                <img src="{{asset('images/').'/'.$post->image}}" height="140px" width="180px" style="border: 1px solid black"/>
+                                <img src="{{asset('storage/images/'.$post->image)}}" height="140px" width="180px" style="border: 1px solid black"/>
                                 </a>
                               </div>
                               <div class="post-info">

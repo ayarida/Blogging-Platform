@@ -48,7 +48,7 @@ class PostController extends Controller
             'image'=> $imageName,
         ]);
     
-        $request->image->move(public_path('images'),$imageName); 
+        $request->image->storeAs('public/images',$imageName); 
 
         return redirect('/post/create')->with('success','Post Created Successfully!');
        
@@ -117,8 +117,6 @@ class PostController extends Controller
     }
 
     //Handle user Like for the post 
-   
-   
     public function likePost(Request $request){
         $UserLike=Like::where('user_id',Auth::id())
         ->where('post_id',$request->post_id)->first();
@@ -132,7 +130,7 @@ class PostController extends Controller
             return response()->json(['success'=>'Like']); 
         }
         else{
-            $UserLike->delete(); //soft delete it from database 
+            $UserLike->delete();
             return response()->json(['success'=>'Dislike']); 
         }
 

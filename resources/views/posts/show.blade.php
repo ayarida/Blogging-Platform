@@ -42,8 +42,8 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div>
-                        <div >
+                   
+                       
                             <div>
                                 
                                 <br/>
@@ -78,8 +78,8 @@
               
                                 @include('posts.commentsDisplay', ['comments' => $post->comments, 'post_id' => $post->id])       
                             </div>
-                        </div>
-                    </div>
+                       
+                    
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
         });
         $('i.fa-thumbs-up').click(function(){
             var id = $(this).parents(".panel").data('id'); //post id 
-            var c = $('#'+this.id+'-bs3').html(); // #likepostId-bs3
+            var c = $('#'+this.id+'-bs3').html(); // counter value
             var cObjId = this.id; // likepostId
             var cObj = $(this); // all the tag
             $.ajax({
@@ -113,9 +113,9 @@
                 }
             });
         });
-        $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
-            event.preventDefault();
-            $(this).ekkoLightbox();
-        });
+        // $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        //     event.preventDefault();
+        //     $(this).ekkoLightbox();
+        // });
     });
 </script>
